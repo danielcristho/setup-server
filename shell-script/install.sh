@@ -8,11 +8,13 @@ echo "================================================================";
 echo "author: @danielcristho                                          ";
 echo " 1. Update machine                                              ";
 echo " 2. Install Nginx                                               ";
-echo " 3. Install MySQL-Server                                        ";
-echo " 4. Install PHP8.0                                              ";
+echo " 3. Install Apache2                                             ";
+echo " 4. Install MySQL-Server                                        ";
+echo " 5. Install PHP8.0                                              ";
+echo " 6. Install DNS-Server                                          ";
 echo " 0. Exit                                                        ";
 echo "================================================================";
-read -p " Masukan Nomor Pilihan Anda [0 - 4] : " choice;
+read -p " Masukan Nomor Pilihan Anda [0 - 6] : " choice;
 echo "";
 case $choice in
 1)  read -p "Anda akan mengupdate machine ini? y/n :" -n 1 -r
@@ -34,7 +36,17 @@ case $choice in
     fi
     ;; 
 
-3)  read -p "Apakah Anda akan menginstall MySQL? y/n :" -n 1 -r
+3)  read -p "Apakah Anda akan menginstall Nginx? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo apt-get install apache2 -y
+    echo "Apache berhasil terinstall"
+    fi
+    ;; 
+
+
+4)  read -p "Apakah Anda akan menginstall MySQL? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -43,7 +55,7 @@ case $choice in
     fi
     ;;
 
-4)  read -p "Apakah Anda akan menginstall PHP? y/n :" -n 1 -r
+5)  read -p "Apakah Anda akan menginstall PHP? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -54,6 +66,15 @@ case $choice in
     echo "PHP berhasil terinstall"
     fi
     ;;
+
+6)  read -p "Apakah Anda akan menginstall bind9? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo apt-get install bind9 -y
+    fi
+    ;;
+
 0) exit
     ;;
 *)    echo "Maaf, menu tidak ada"
