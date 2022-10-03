@@ -4,11 +4,14 @@ again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
-echo " 1. Update machine "
-echo " 2. Install Nginx "
-echo " 3. Install MySQL-Server "
-echo " 4. Install PHP8.0"
-read -p " Masukan Nomor Pilihan Anda [1 - 4] : " choice;
+echo "================================================================";
+echo " 1. Update machine ";
+echo " 2. Install Nginx ";
+echo " 3. Install MySQL-Server ";
+echo " 4. Install PHP8.0";
+echo " 0. Exit";
+echo "================================================================";
+read -p " Masukan Nomor Pilihan Anda [0 - 4] : " choice;
 echo "";
 case $choice in
 1)  read -p "Anda akan mengupdate machine ini? y/n :" -n 1 -r
@@ -49,7 +52,7 @@ case $choice in
     echo "PHP berhasil terinstall"
     fi
     ;;
-5) exit
+0) exit
     ;;
 *)    echo "Maaf, menu tidak ada"
 esac
