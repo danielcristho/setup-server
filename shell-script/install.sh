@@ -49,7 +49,7 @@ case $choice in
     sudo add-apt-repository ppa:ondrej/php
     sudo apt update
     echo "Add PHP Repository"
-    sudo apt install php8.0-common php8.0-cli php8.0-mbstring php8.0-xml php8.0-curl php8.0-mysql php8.0-fpm -y
+    sudo apt-get install php8.0-common php8.0-cli php8.0-mbstring php8.0-xml php8.0-curl php8.0-mysql php8.0-fpm -y
     echo "PHP berhasil terinstall"
     fi
     ;;
