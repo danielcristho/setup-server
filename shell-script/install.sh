@@ -20,6 +20,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt update
+    sudo apt-get install net-tools -y
     echo "Update berhasil"
     fi
     ;;
