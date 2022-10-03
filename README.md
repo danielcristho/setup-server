@@ -1,2 +1,2 @@
 # setup-server
-Setup Server menggunakan Bash Script
+Setup Server menggunakan beberapa Automation Tool
