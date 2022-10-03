@@ -5,11 +5,12 @@ while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
 echo "================================================================";
-echo " 1. Update machine ";
-echo " 2. Install Nginx ";
-echo " 3. Install MySQL-Server ";
-echo " 4. Install PHP8.0";
-echo " 0. Exit";
+echo "author: @danielcristho                                          ";
+echo " 1. Update machine                                              ";
+echo " 2. Install Nginx                                               ";
+echo " 3. Install MySQL-Server                                        ";
+echo " 4. Install PHP8.0                                              ";
+echo " 0. Exit                                                        ";
 echo "================================================================";
 read -p " Masukan Nomor Pilihan Anda [0 - 4] : " choice;
 echo "";
