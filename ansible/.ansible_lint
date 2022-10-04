@@ -1,3 +1,0 @@
-enable_list:
-  - empty-string-compare # opt-in
-  - no-log-password # opt-in
