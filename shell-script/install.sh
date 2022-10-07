@@ -11,11 +11,15 @@ echo " 2. Install Nginx                                               ";
 echo " 3. Install Apache2                                             ";
 echo " 4. Install MySQL-Server                                        ";
 echo " 5. Install PHP8.0                                              ";
+echo " 5. Install PHP8.1                                              ";
 echo " 6. Install DNS-Server                                          ";
+echo " 7. Install DHCP-Server                                         ";
+echo " 8. Restart Machine                                             ";
+echo " 9. Set fireawall permisision                                   ";
 echo " 0. Exit                                                        ";
 echo "================================================================";
 
-read -p " Enter Your Choice Number [0 - 6] : " choice;
+read -p " Enter Your Choice Number [0 - 9] : " choice;
 echo "";
 case $choice in
 
@@ -52,11 +56,14 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install mysql-server -y
+    sudo apt-get install debconf-utils -y
+    debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
     echo "MySQL is ready to use"
     fi
     ;;
 
-5)  read -p "You want install PHP? y/n :" -n 1 -r
+5)  read -p "You want install PHP8.0? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -68,13 +75,61 @@ case $choice in
     fi
     ;;
 
-6)  read -p "You want install bind9? y/n :" -n 1 -r
+6)  read -p "You want install PHP8.1? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt update
+    echo "Add PHP Repository"
+    sudo apt-get install php8.1-common php8.1-cli php8.1-mbstring php8.1-xml php8.1-curl php8.1-mysql php8.1-fpm -y
+    echo "PHP is ready to use"
+    fi
+    ;;
+
+7)  read -p "You want install bind9? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install bind9 -y
+    echo "Bind9 is ready to use"
     fi
     ;;
+
+7)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo apt-get install isc-dhcp-server -y
+    sudo mv /etc/dhcp/dhcp.conf /tmp
+    sudo cp support/dhcp.conf /etc/dhcp
+    sudo nan /etc/dhcp/dhcpd.conf
+    service isc-dhcp-server restart
+    echo "DHCP-Ssrver is ready to use"
+    fi
+    ;;
+
+8)  read -p "You want restart this machine? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo reboot
+    fi
+    ;;
+
+9)  read -p "You want set UFW permission? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo ufw enable
+    sudo ufw allow ssh
+    sudo ufw allow 'Nginx HTTP'
+    sudo ufw allow 443
+    sudo ufw allow 80
+    sudo ufw allow 22
+    fi
+    ;;
+
 
 0) exit
     ;;
