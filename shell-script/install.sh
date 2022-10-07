@@ -106,8 +106,10 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    source ~/.nvm/nvm.sh
     source ~/.bashrc
+    nvm install 16.15.1
     nvm alias default 16.15.1
     node -v
     echo "Node is ready to use"
