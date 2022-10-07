@@ -15,7 +15,7 @@ echo " 6.  Install PHP8.1                                              ";
 echo " 7.  Install Yarn                                                ";
 echo " 8.  Install Node js using NVM                                   ";
 echo " 9.  Install PM2                                                 ";
-echo " 10.  Install DNS-Server                                          ";
+echo " 10. Install DNS-Server                                          ";
 echo " 11. Install DHCP-Server                                         ";
 echo " 12. Restart Machine                                             ";
 echo " 13. Set fireawall permisision                                   ";
@@ -169,7 +169,6 @@ case $choice in
     sudo ufw allow 22
     fi
     ;;
-
 
 0) exit
     ;;
