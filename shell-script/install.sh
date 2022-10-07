@@ -4,22 +4,22 @@ again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
-echo "================================================================";
-echo "author: @danielcristho                                          ";
-echo " 1. Update machine                                              ";
-echo " 2. Install Nginx                                               ";
-echo " 3. Install Apache2                                             ";
-echo " 4. Install MySQL-Server                                        ";
-echo " 5. Install PHP8.0                                              ";
-echo " 6. Install PHP8.1                                              ";
-echo " 7. Install Yarn                                                ";
-echo " 8. Install Node js using NVM                                   ";
-echo " 9. Install DNS-Server                                          ";
-echo " 10. Install DHCP-Server                                        ";
-echo " 11. Restart Machine                                            ";
-echo " 12. Set fireawall permisision                                  ";
-echo " 0. Exit                                                        ";
-echo "================================================================";
+echo "=================================================================";
+echo "author: @danielcristho                                           ";
+echo " 1.  Update machine                                              ";
+echo " 2.  Install Nginx                                               ";
+echo " 3.  Install Apache2                                             ";
+echo " 4.  Install MySQL-Server                                        ";
+echo " 5.  Install PHP8.0                                              ";
+echo " 6.  Install PHP8.1                                              ";
+echo " 7.  Install Yarn                                                ";
+echo " 8.  Install Node js using NVM                                   ";
+echo " 9.  Install DNS-Server                                          ";
+echo " 10. Install DHCP-Server                                         ";
+echo " 11. Restart Machine                                             ";
+echo " 12. Set fireawall permisision                                   ";
+echo " 0.  Exit                                                        ";
+echo "=================================================================";
 
 read -p " Enter Your Choice Number [0 - 10] : " choice;
 echo "";
@@ -110,6 +110,7 @@ case $choice in
     source ~/.nvm/nvm.sh
     source ~/.bashrc
     nvm install 16.15.1
+    nvm use 16.15.1
     nvm alias default 16.15.1
     node -v
     echo "Node is ready to use"
