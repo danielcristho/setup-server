@@ -12,10 +12,12 @@ echo " 3. Install Apache2                                             ";
 echo " 4. Install MySQL-Server                                        ";
 echo " 5. Install PHP8.0                                              ";
 echo " 6. Install PHP8.1                                              ";
-echo " 7. Install DNS-Server                                          ";
-echo " 8. Install DHCP-Server                                         ";
-echo " 9. Restart Machine                                             ";
-echo " 10. Set fireawall permisision                                   ";
+echo " 7. Install Yarn                                                ";
+echo " 8. Install Node js using NVM                                   ";
+echo " 9. Install DNS-Server                                          ";
+echo " 10. Install DHCP-Server                                        ";
+echo " 11. Restart Machine                                            ";
+echo " 12. Set fireawall permisision                                  ";
 echo " 0. Exit                                                        ";
 echo "================================================================";
 
@@ -79,15 +81,40 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
+    echo "Add PHP Repository"
     sudo add-apt-repository ppa:ondrej/php
     sudo apt update
-    echo "Add PHP Repository"
     sudo apt-get install php8.1-common php8.1-cli php8.1-mbstring php8.1-xml php8.1-curl php8.1-mysql php8.1-fpm -y
     echo "PHP is ready to use"
     fi
     ;;
 
-7)  read -p "You want install bind9? y/n :" -n 1 -r
+7)  read -p "You want install Yarn? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    echo "Add Yarn Repository"
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt-get update
+    sudo apt-get install yarn -y
+    echo "Yarn is ready to use"
+    fi
+    ;;
+
+8)  read -p "You want install Node? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
+    source ~/.bashrc
+    nvm alias default 16.15.1
+    node -v
+    echo "Node is ready to use"
+    fi
+    ;;
+
+9)  read -p "You want install bind9? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -96,7 +123,7 @@ case $choice in
     fi
     ;;
 
-8)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
+10)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -109,7 +136,7 @@ case $choice in
     fi
     ;;
 
-9)  read -p "You want restart this machine? y/n :" -n 1 -r
+11)  read -p "You want restart this machine? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -117,7 +144,7 @@ case $choice in
     fi
     ;;
 
-10)  read -p "You want set UFW permission? y/n :" -n 1 -r
+12)  read -p "You want set UFW permission? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
