@@ -11,15 +11,15 @@ echo " 2. Install Nginx                                               ";
 echo " 3. Install Apache2                                             ";
 echo " 4. Install MySQL-Server                                        ";
 echo " 5. Install PHP8.0                                              ";
-echo " 5. Install PHP8.1                                              ";
-echo " 6. Install DNS-Server                                          ";
-echo " 7. Install DHCP-Server                                         ";
-echo " 8. Restart Machine                                             ";
-echo " 9. Set fireawall permisision                                   ";
+echo " 6. Install PHP8.1                                              ";
+echo " 7. Install DNS-Server                                          ";
+echo " 8. Install DHCP-Server                                         ";
+echo " 9. Restart Machine                                             ";
+echo " 10. Set fireawall permisision                                   ";
 echo " 0. Exit                                                        ";
 echo "================================================================";
 
-read -p " Enter Your Choice Number [0 - 9] : " choice;
+read -p " Enter Your Choice Number [0 - 10] : " choice;
 echo "";
 case $choice in
 
@@ -96,7 +96,7 @@ case $choice in
     fi
     ;;
 
-7)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
+8)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -109,7 +109,7 @@ case $choice in
     fi
     ;;
 
-8)  read -p "You want restart this machine? y/n :" -n 1 -r
+9)  read -p "You want restart this machine? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -117,7 +117,7 @@ case $choice in
     fi
     ;;
 
-9)  read -p "You want set UFW permission? y/n :" -n 1 -r
+10)  read -p "You want set UFW permission? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
