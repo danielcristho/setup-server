@@ -14,14 +14,15 @@ echo " 5.  Install PHP8.0                                              ";
 echo " 6.  Install PHP8.1                                              ";
 echo " 7.  Install Yarn                                                ";
 echo " 8.  Install Node js using NVM                                   ";
-echo " 9.  Install DNS-Server                                          ";
-echo " 10. Install DHCP-Server                                         ";
-echo " 11. Restart Machine                                             ";
-echo " 12. Set fireawall permisision                                   ";
+echo " 9.  Install PM2                                                 ";
+echo " 10.  Install DNS-Server                                          ";
+echo " 11. Install DHCP-Server                                         ";
+echo " 12. Restart Machine                                             ";
+echo " 13. Set fireawall permisision                                   ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
-read -p " Enter Your Choice Number [0 - 10] : " choice;
+read -p " Enter Your Choice Number [0 - 13] : " choice;
 echo "";
 case $choice in
 
@@ -117,7 +118,16 @@ case $choice in
     fi
     ;;
 
-9)  read -p "You want install bind9? y/n :" -n 1 -r
+9)  read -p "You want install pm2? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    npm install -g pm2
+    echo "pm2 is ready to use"
+    fi
+    ;;
+
+10)  read -p "You want install bind9? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -126,7 +136,7 @@ case $choice in
     fi
     ;;
 
-10)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
+11)  read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -139,7 +149,7 @@ case $choice in
     fi
     ;;
 
-11)  read -p "You want restart this machine? y/n :" -n 1 -r
+12)  read -p "You want restart this machine? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -147,7 +157,7 @@ case $choice in
     fi
     ;;
 
-12)  read -p "You want set UFW permission? y/n :" -n 1 -r
+13)  read -p "You want set UFW permission? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
