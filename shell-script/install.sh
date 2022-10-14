@@ -171,7 +171,7 @@ case $choice in
     fi
     ;;
 
-13) read -p "You want set up Apache2? y/n :" -n 1 -r
+14) read -p "You want set up Apache2? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -181,6 +181,7 @@ case $choice in
     echo "Edit index.html "
     cd /var/www/html/
     echo '<h1>Welcome to Server 1</h1>' > index.html
+    sudo service restart apache2
     fi
     ;;    
 
