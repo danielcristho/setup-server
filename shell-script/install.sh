@@ -19,6 +19,7 @@ echo " 10. Install DNS-Server                                          ";
 echo " 11. Install DHCP-Server                                         ";
 echo " 12. Restart Machine                                             ";
 echo " 13. Set fireawall permisision                                   ";
+echo " 14. Setup Apache2                                               ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
@@ -169,6 +170,19 @@ case $choice in
     sudo ufw allow 22
     fi
     ;;
+
+13) read -p "You want set up Apache2? y/n :" -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then 
+    sudo systemctl status apache2 | grep Active
+    echo " Edit file permission in /var/www"
+    sudo chown -R www-data:www-data /var/www
+    echo "Edit index.html "
+    cd /var/www/html/
+    echo '<h1>Welcome to Server 1</h1>' > index.html
+    fi
+    ;;    
 
 0) exit
     ;;
