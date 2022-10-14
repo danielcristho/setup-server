@@ -23,7 +23,7 @@ echo " 14. Setup Apache2                                               ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
-read -p " Enter Your Choice Number [0 - 13] : " choice;
+read -p " Enter Your Choice Number [0 - 14] : " choice;
 echo "";
 case $choice in
 
