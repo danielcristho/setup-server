@@ -11,7 +11,7 @@ clear
 echo "=================================================================";
 echo "author: @danielcristho                                           ";
 echo " 1.  Update machine                                              ";
-echo " 2.  Update machine                                              ";
+echo " 2.  Upgrade machine                                             ";
 echo " 3.  Install Nginx                                               ";
 echo " 4.  Install Apache2                                             ";
 echo " 5.  Install MySQL-Server                                        ";
@@ -182,8 +182,8 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo systemctl status apache2 | grep Active
-    echo " Edit file permission in /var/www"
-    sudo chown -R www-data:www-data /var/www
+    echo " Edit file permission in /var/www/html"
+    sudo chown -R www-data:www-data /var/www/html
     echo "Edit index.html "
     cd /var/www/html/
     echo '<h1>Welcome to Server 1</h1>' > index.html
