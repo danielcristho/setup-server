@@ -22,9 +22,9 @@ echo " 9.  Install Node js using NVM                                   ";
 echo " 10. Install PM2                                                 ";
 echo " 11. Install DNS-Server                                          ";
 echo " 12. Install DHCP-Server                                         ";
-echo " 13. Restart Machine                                             ";
-echo " 14. Set fireawall permisision                                   ";
-echo " 15. Setup Apache2 (edit index.html)                             ";
+echo " 13. Set fireawall permisision                                   ";
+echo " 14. Setup Apache2 (edit index.html)                             ";
+echo " 15. Restart Machine                                             ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
