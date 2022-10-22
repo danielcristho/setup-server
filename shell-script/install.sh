@@ -24,7 +24,7 @@ echo " 11. Install DNS-Server                                          ";
 echo " 12. Install DHCP-Server                                         ";
 echo " 13. Set fireawall permisision                                   ";
 echo " 14. Setup Apache2 (edit index.html)                             ";
-echo " 15. Restart Machine                                             ";
+echo " 15. Restart machine                                             ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
@@ -56,6 +56,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install nginx -y
+    sudo apt-get install lynx -y
     echo "Nginx is ready to use"
     fi
     ;; 
@@ -65,6 +66,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install apache2 -y
+    sudo apt-get install lynx -y
     echo "Apache is ready to use"
     fi
     ;; 
@@ -168,7 +170,7 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo ufw enable
+    echo "y" | sudo ufw enable
     sudo ufw allow ssh
     sudo ufw allow 'Nginx HTTP'
     sudo ufw allow 443
