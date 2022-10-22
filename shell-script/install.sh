@@ -188,7 +188,7 @@ case $choice in
     sudo chown -R www-data:www-data /var/www/html
     echo "Edit index.html "
     cd /var/www/html/
-    echo '<h1>Welcome to Server 1</h1>' > index.html
+    sudo echo '<h1>Welcome to Server 1</h1>' > index.html
     sudo service restart apache2
     fi
     ;;
