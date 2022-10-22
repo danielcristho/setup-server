@@ -184,12 +184,11 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo systemctl status apache2 | grep Active
-    echo " Edit file permission in /var/www/html"
-    sudo chown -R www-data:www-data /var/www/html
-    echo "Edit index.html "
+    echo "Edit index.html"
     cd /var/www/html/
+    sudo chown -R www-data:www-data .
     sudo echo '<h1>Welcome to Server 1</h1>' > index.html
-    sudo service restart apache2
+    sudo service apache2 restart
     fi
     ;;
 
