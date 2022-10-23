@@ -1,2 +1,2 @@
 # setup-server
-Automation Tool for Server Setup
+Simple automation tool for Server Setup
