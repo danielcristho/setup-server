@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #CONSTANT
-#Database Password
 DB_PASSWORD='mypassword'
 
 again='y'
@@ -20,11 +19,9 @@ echo " 7.  Install PHP8.1                                              ";
 echo " 8.  Install Yarn                                                ";
 echo " 9.  Install Node js using NVM                                   ";
 echo " 10. Install PM2                                                 ";
-echo " 11. Install DNS-Server                                          ";
-echo " 12. Install DHCP-Server                                         ";
-echo " 13. Set fireawall permisision                                   ";
-echo " 14. Setup Apache2 (edit index.html)                             ";
-echo " 15. Restart machine                                             ";
+echo " 11. Set fireawall permisision                                   ";
+echo " 12. Setup Apache2 (edit index.html)                             ";
+echo " 13. Restart machine                                             ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
@@ -32,26 +29,26 @@ read -p " Enter Your Choice [0 - 15] : " choice;
 echo "";
 case $choice in
 
-1)  read -p "You will update this machine? y/n :" -n 1 -r
+1)  read -p "You will update this machine? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo apt update
+    sudo apt update -y
     sudo apt-get install net-tools -y
     echo "Update success"
     fi
     ;;
 
-2)  read -p "You will upgrade this machine? y/n :" -n 1 -r
+2)  read -p "You will upgrade this machine? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo apt upgrade
+    sudo apt upgrade -y
     echo "Upgrade success"
     fi
     ;;
 
-3)  read -p "You want install Nginx? y/n :" -n 1 -r
+3)  read -p "You want install Nginx? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -61,7 +58,7 @@ case $choice in
     fi
     ;; 
 
-4)  read -p "You want install Apache? y/n :" -n 1 -r
+4)  read -p "You want install Apache? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -71,7 +68,7 @@ case $choice in
     fi
     ;; 
 
-5)  read -p "You want install MySQL? y/n :" -n 1 -r
+5)  read -p "You want install MySQL? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -83,7 +80,7 @@ case $choice in
     fi
     ;;
 
-6)  read -p "You want install PHP8.0? y/n :" -n 1 -r
+6)  read -p "You want install PHP8.0? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -95,7 +92,7 @@ case $choice in
     fi
     ;;
 
-7)  read -p "You want install PHP8.1? y/n :" -n 1 -r
+7)  read -p "You want install PHP8.1? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -107,7 +104,7 @@ case $choice in
     fi
     ;;
 
-8)  read -p "You want install Yarn? y/n :" -n 1 -r
+8)  read -p "You want install Yarn? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -120,7 +117,7 @@ case $choice in
     fi
     ;;
 
-9)  read -p "You want install Node? y/n :" -n 1 -r
+9)  read -p "You want install Node? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -135,7 +132,7 @@ case $choice in
     fi
     ;;
 
-10) read -p "You want install pm2? y/n :" -n 1 -r
+10) read -p "You want install pm2? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -144,29 +141,8 @@ case $choice in
     fi
     ;;
 
-11) read -p "You want install bind9? y/n :" -n 1 -r
-    echo ""
-    if [[ ! $REPLY =~ ^[Nn]$ ]]
-    then 
-    sudo apt-get install bind9 -y
-    echo "Bind9 is ready to use"
-    fi
-    ;;
 
-12) read -p "You want install isc-dhcp-server? y/n :" -n 1 -r
-    echo ""
-    if [[ ! $REPLY =~ ^[Nn]$ ]]
-    then 
-    sudo apt-get install isc-dhcp-server -y
-    sudo mv /etc/dhcp/dhcp.conf /tmp
-    sudo cp support/dhcp.conf /etc/dhcp
-    sudo nan /etc/dhcp/dhcpd.conf
-    service isc-dhcp-server restart
-    echo "DHCP-Ssrver is ready to use"
-    fi
-    ;;
-
-13) read -p "You want set UFW permission? y/n :" -n 1 -r
+11) read -p "You want set UFW permission? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -179,7 +155,7 @@ case $choice in
     fi
     ;;
 
-14) read -p "You want set up Apache2? y/n :" -n 1 -r
+12) read -p "You want set up Apache2? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -192,7 +168,7 @@ case $choice in
     fi
     ;;
 
-15) read -p "You want restart this machine? y/n :" -n 1 -r
+13) read -p "You want restart this machine? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
