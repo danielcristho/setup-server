@@ -111,7 +111,6 @@ EOF
     cd /etc/bind
     echo "Replace all localhost string with domain name..."
     sudo sed -i "s/localhost/${DOMAIN_NAME}/gI" ${FORWARD_FILE}
-    echo "Replace 127.0.0.1 with server address..."
     echo "Adding new record..."
     sudo cat >> /etc/bind/${REVERSE_FILE} <<- EOF
 @        IN        NS         $DOMAIN_NAME.
