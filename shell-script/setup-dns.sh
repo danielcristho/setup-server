@@ -25,7 +25,7 @@ echo " 8. Remove bind9                                                 ";
 echo " 0. Exit                                                         ";
 echo "=================================================================";
 
-read -p " Enter Your Choice [0 - 6] : " choice;
+read -p " Enter Your Choice [0 - 8] : " choice;
 echo "";
 case $choice in
 
@@ -142,7 +142,7 @@ EOF
     fi
     ;;
 
-7)  read -p "You want  to remove bind9 and all config files? y/n :" -n 1 -r
+8)  read -p "You want  to remove bind9 and all config files? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
