@@ -13,10 +13,9 @@ while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
 echo "=================================================================";
-echo "author: @danielcristho                                           ";
 echo " 1. Update machine                                               ";
 echo " 2. Upgrade machine                                              ";
-echo " 3. Install Bind9                                                ";
+echo " 3. Install bind9                                                ";
 echo " 4. Create new zone (forward zone&reverse zone)                  ";
 echo " 5. Configure forward zone                                       ";
 echo " 6. Configure reverse zone                                       ";

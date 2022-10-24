@@ -8,7 +8,6 @@ while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
 echo "=================================================================";
-echo "author: @danielcristho                                           ";
 echo " 1.  Update machine                                              ";
 echo " 2.  Upgrade machine                                             ";
 echo " 3.  Install Nginx                                               ";
