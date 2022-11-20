@@ -13,18 +13,19 @@ echo " 2.  Upgrade machine                                             ";
 echo " 3.  Install Nginx                                               ";
 echo " 4.  Install Apache2                                             ";
 echo " 5.  Install MySQL-Server                                        ";
-echo " 6.  Install PHP8.0                                              ";
-echo " 7.  Install PHP8.1                                              ";
-echo " 8.  Install Yarn                                                ";
-echo " 9.  Install Node js using NVM                                   ";
-echo " 10. Install PM2                                                 ";
-echo " 11. Set fireawall permisision                                   ";
-echo " 12. Setup Apache2 (edit index.html)                             ";
-echo " 13. Restart machine                                             ";
+echo " 6.  Install PgSQL-Server                                        ";
+echo " 7.  Install PHP8.0                                              ";
+echo " 8.  Install PHP8.1                                              ";
+echo " 9.  Install Yarn                                                ";
+echo " 10.  Install Node js using NVM                                   ";
+echo " 11. Install PM2                                                 ";
+echo " 12. Set fireawall permisision                                   ";
+echo " 13. Setup Apache2 (edit index.html)                             ";
+echo " 14. Restart machine                                             ";
 echo " 0.  Exit                                                        ";
 echo "=================================================================";
 
-read -p " Enter Your Choice [0 - 15] : " choice;
+read -p " Enter Your Choice [0 - 14] : " choice;
 echo "";
 case $choice in
 
@@ -71,15 +72,28 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo apt-get install mysql-server -y
     sudo apt-get install debconf-utils -y
     debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $DB_PASSWORD'
     sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DB_PASSWORD"
+    sudo apt-get install mysql-server -y
     echo "MySQL is ready to use"
     fi
     ;;
 
-6)  read -p "You want install PHP8.0? y/n : " -n 1 -r
+6)  read -p "You want install PgSQL? y/n : " -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    echo "Add Repository..." 
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo apt-get update
+    sudo apt-get install postgresql-14 -y
+    echo "PgSQL is ready to use"
+    fi
+    ;;
+
+7)  read -p "You want install PHP8.0? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -91,7 +105,7 @@ case $choice in
     fi
     ;;
 
-7)  read -p "You want install PHP8.1? y/n : " -n 1 -r
+8)  read -p "You want install PHP8.1? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -103,7 +117,7 @@ case $choice in
     fi
     ;;
 
-8)  read -p "You want install Yarn? y/n : " -n 1 -r
+9)  read -p "You want install Yarn? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -116,7 +130,7 @@ case $choice in
     fi
     ;;
 
-9)  read -p "You want install Node? y/n : " -n 1 -r
+10) read -p "You want install Node? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -131,7 +145,7 @@ case $choice in
     fi
     ;;
 
-10) read -p "You want install pm2? y/n : " -n 1 -r
+11) read -p "You want install pm2? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -141,7 +155,7 @@ case $choice in
     ;;
 
 
-11) read -p "You want set UFW permission? y/n : " -n 1 -r
+12) read -p "You want set UFW permission? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -154,7 +168,7 @@ case $choice in
     fi
     ;;
 
-12) read -p "You want set up Apache2? y/n : " -n 1 -r
+13) read -p "You want set up Apache2? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
@@ -167,7 +181,7 @@ case $choice in
     fi
     ;;
 
-13) read -p "You want restart this machine? y/n :" -n 1 -r
+14) read -p "You want restart this machine? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
