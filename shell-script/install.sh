@@ -17,7 +17,7 @@ echo " 6.  Install PgSQL-Server                                        ";
 echo " 7.  Install PHP8.0                                              ";
 echo " 8.  Install PHP8.1                                              ";
 echo " 9.  Install Yarn                                                ";
-echo " 10.  Install Node js using NVM                                   ";
+echo " 10. Install Node js using NVM                                  ";
 echo " 11. Install PM2                                                 ";
 echo " 12. Set fireawall permisision                                   ";
 echo " 13. Setup Apache2 (edit index.html)                             ";
