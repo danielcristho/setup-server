@@ -4,23 +4,29 @@ again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
-echo "=================================================================";
-echo " 1.  Update machine                                              ";
-echo " 2.  Upgrade machine                                             ";
-echo " 3.  Install Nginx                                               ";
-echo " 4.  Install Apache2                                             ";
-echo " 5.  Install MariaDB                                             ";
-echo " 6.  Install PgSQL-Server                                        ";
-echo " 7.  Install PHP8.0                                              ";
-echo " 8.  Install PHP8.1                                              ";
-echo " 9.  Install Yarn                                                ";
-echo " 10. Install Node js using NVM                                   ";
-echo " 11. Install PM2                                                 ";
-echo " 12. Set fireawall permisision                                   ";
-echo " 13. Setup Apache2 (edit index.html)                             ";
-echo " 14. Restart machine                                             ";
-echo " 0.  Exit                                                        ";
-echo "=================================================================";
+echo "============================================================="
+echo "  ___       _                 ____                           "
+echo "/ ___|  ___| |_ _   _ _ __   / ___|  ___ _ ____   _____ _ __ "
+echo "\___ \ / _ \ __| | | | '_ \  \___ \ / _ \ '__\ \ / / _ \ '__|"
+echo " ___) |  __/ |_| |_| | |_) |  ___) |  __/ |   \ V /  __/ |   "
+echo "|____/ \___|\__|\__,_| .__/  |____/ \___|_|    \_/ \___|_|   "
+echo "                     |_|                                     "
+echo "============================================================="
+echo " 1.  Update machine                                          "
+echo " 2.  Upgrade machine                                         "
+echo " 3.  Install Nginx                                           "
+echo " 4.  Install Apache2                                         "
+echo " 5.  Install MariaDB                                         "
+echo " 6.  Install PgSQL-Server                                    "
+echo " 7.  Install PHP8.0                                          "
+echo " 8.  Install PHP8.1                                          "
+echo " 9.  Install Yarn                                            "
+echo " 10. Install Node js using NVM                               "
+echo " 11. Install PM2                                             "
+echo " 12. Set fireawall permisision                               "
+echo " 13. Setup Apache2 (edit index.html)                         "
+echo " 14. Restart machine                                         "
+echo " 0.  Exit                                                    "
 
 read -p " Enter Your Choice [0 - 14] : " choice;
 echo "";
@@ -50,8 +56,8 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install nginx -y
-    rm /etc/sites-enabled/default.conf
-    wget -O /etc/nginx/sites-enabled/$host.conf https://raw.githubusercontent.com/danielcristho/setup-server/main/default.conf 
+    echo "Create default file for Nginx"
+    wget -O /etc/nginx/sites-enabled/default https://raw.githubusercontent.com/danielcristho/setup-server/main/defaut.conf
     echo "Nginx is ready to use"
     fi
     ;;
@@ -61,7 +67,6 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install apache2 -y
-    sudo apt-get install lynx -y
     echo "Apache is ready to use"
     fi
     ;; 
@@ -77,7 +82,7 @@ case $choice in
     curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
     sudo bash mariadb_repo_setup --mariadb-server-version=10.6
     sudo apt-get update
-    sudo apt-install mariadb-server mariadb-client -y
+    sudo apt-get install mariadb-server mariadb-client -y
     echo "MariaDB is ready to use"
     fi
     ;;
