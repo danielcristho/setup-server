@@ -50,6 +50,8 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install nginx -y
+    rm /etc/sites-enabled/default.conf
+    wget -O /etc/nginx/sites-enabled/$host.conf https://raw.githubusercontent.com/danielcristho/setup-server/main/default.conf 
     echo "Nginx is ready to use"
     fi
     ;;
