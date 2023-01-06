@@ -1,12 +1,1 @@
-### Vagrant ###
-.vagrant
-
-### Python ###
-.env
-env 
-venv
-.venv
-
-
-### Paramiko output file"
-*_output.txt
+.vscode

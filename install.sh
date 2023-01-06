@@ -1,7 +1,4 @@
-#!/bin/bash
-
-#CONSTANT
-DB_PASSWORD='mypassword'
+#!/usr/bin/env bash
 
 again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
@@ -12,12 +9,12 @@ echo " 1.  Update machine                                              ";
 echo " 2.  Upgrade machine                                             ";
 echo " 3.  Install Nginx                                               ";
 echo " 4.  Install Apache2                                             ";
-echo " 5.  Install MySQL-Server                                        ";
+echo " 5.  Install MariaDB                                             ";
 echo " 6.  Install PgSQL-Server                                        ";
 echo " 7.  Install PHP8.0                                              ";
 echo " 8.  Install PHP8.1                                              ";
 echo " 9.  Install Yarn                                                ";
-echo " 10. Install Node js using NVM                                  ";
+echo " 10. Install Node js using NVM                                   ";
 echo " 11. Install PM2                                                 ";
 echo " 12. Set fireawall permisision                                   ";
 echo " 13. Setup Apache2 (edit index.html)                             ";
@@ -34,7 +31,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt update -y
-    sudo apt-get install net-tools -y
+    sudo apt-get install net-tools lynx zip unzip -y
     echo "Update success"
     fi
     ;;
@@ -53,10 +50,9 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install nginx -y
-    sudo apt-get install lynx -y
     echo "Nginx is ready to use"
     fi
-    ;; 
+    ;;
 
 4)  read -p "You want install Apache? y/n : " -n 1 -r
     echo ""
@@ -68,15 +64,19 @@ case $choice in
     fi
     ;; 
 
-5)  read -p "You want install MySQL? y/n : " -n 1 -r
+5)  read -p "You want install MariaDB? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt-get install debconf-utils -y
-    debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $DB_PASSWORD'
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DB_PASSWORD"
-    sudo apt-get install mysql-server -y
-    echo "MySQL is ready to use"
+    DB_PASSWORD=$(hostname | md5sum | awk '{print $1}')
+    debconf-set-selections <<< "mariadb-server-10.6 mysql-server/root_password password $DB_PASSWORD"
+    debconf-set-selections <<< "mariadb-server-10.2 mysql-server/root_password_again password $DB_PASSWORD"
+    curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    sudo bash mariadb_repo_setup --mariadb-server-version=10.6
+    sudo apt-get update
+    sudo apt-install mariadb-server mariadb-client -y
+    echo "MariaDB is ready to use"
     fi
     ;;
 

@@ -1,9 +1,15 @@
-# Setup-Server
+# Usage
 
-### This project contains:
-  - ![Ansible](https://github.com/danielcristho/setup-server/tree/main/ansible)
-  - ![Paramiko](https://github.com/danielcristho/setup-server/tree/main/paramiko)
-  - ![Shell Script](https://github.com/danielcristho/setup-server/tree/main/shell-script)
+To download and run this script use the single line below:
 
-#### feel free if you want to modify this project.
-author: ![danielcristho](https://github.com/danielcristho)
+```bash
+wget https://raw.githubusercontent.com/danielcristho/setup-server/main/shell-script/install.sh && bash install.sh
+```
+
+Or make the script executable
+
+```bash
+wget https://raw.githubusercontent.com/danielcristho/setup-server/main/shell-script/install.sh
+chmod +x install.sh
+./install.sh
+```
