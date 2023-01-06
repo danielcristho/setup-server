@@ -17,7 +17,7 @@ echo " 2.  Upgrade machine                                         "
 echo " 3.  Install Nginx                                           "
 echo " 4.  Install Apache2                                         "
 echo " 5.  Install MariaDB                                         "
-echo " 6.  Install PgSQL-Server                                    "
+echo " 6.  Install Postgres                                        "
 echo " 7.  Install PHP8.0                                          "
 echo " 8.  Install PHP8.1                                          "
 echo " 9.  Install Yarn                                            "
@@ -86,7 +86,7 @@ case $choice in
     fi
     ;;
 
-6)  read -p "You want install PgSQL? y/n : " -n 1 -r
+6)  read -p "You want install Postgres? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
