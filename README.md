@@ -1,4 +1,13 @@
-# Usage
+# Setup Server
+
+BASH Script for stack installation and configure your Ubuntu
+
+## Requirements
+
+- Ubuntu 18.04 or latest version
+- This script utilises root user privileges. If you run it from another user you need to add this user to sudoers group and prepend sudo to all commands in the script.
+
+## Usage
 
 To download and run this script use the single line below:
 

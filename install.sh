@@ -4,14 +4,14 @@ again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
-echo "============================================================="
-echo "  ___       _                 ____                           "
-echo "/ ___|  ___| |_ _   _ _ __   / ___|  ___ _ ____   _____ _ __ "
-echo "\___ \ / _ \ __| | | | '_ \  \___ \ / _ \ '__\ \ / / _ \ '__|"
-echo " ___) |  __/ |_| |_| | |_) |  ___) |  __/ |   \ V /  __/ |   "
-echo "|____/ \___|\__|\__,_| .__/  |____/ \___|_|    \_/ \___|_|   "
-echo "                     |_|                                     "
-echo "============================================================="
+echo "***************************************************************"
+echo "*  ___       _                 ____                           *"
+echo "*/ ___|  ___| |_ _   _ _ __   / ___|  ___ _ ____   _____ _ __ *"
+echo "*\___ \ / _ \ __| | | | '_ \  \___ \ / _ \ '__\ \ / / _ \ '__|*"
+echo "* ___) |  __/ |_| |_| | |_) |  ___) |  __/ |   \ V /  __/ |   *"
+echo "*|____/ \___|\__|\__,_| .__/  |____/ \___|_|    \_/ \___|_|   *"
+echo "*                     |_|                                     *"
+echo "***************************************************************"
 echo " 1.  Update machine                                          "
 echo " 2.  Upgrade machine                                         "
 echo " 3.  Install Nginx                                           "
@@ -24,11 +24,10 @@ echo " 9.  Install Yarn                                            "
 echo " 10. Install Node js using NVM                               "
 echo " 11. Install PM2                                             "
 echo " 12. Set fireawall permisision                               "
-echo " 13. Setup Apache2 (edit index.html)                         "
-echo " 14. Restart machine                                         "
+echo " 13. Restart machine                                         "
 echo " 0.  Exit                                                    "
 
-read -p " Enter Your Choice [0 - 14] : " choice;
+read -p " Enter Your Choice [0 - 13] : " choice;
 echo "";
 case $choice in
 
@@ -175,20 +174,7 @@ case $choice in
     fi
     ;;
 
-13) read -p "You want set up Apache2? y/n : " -n 1 -r
-    echo ""
-    if [[ ! $REPLY =~ ^[Nn]$ ]]
-    then 
-    sudo systemctl status apache2 | grep Active
-    echo "Edit index.html"
-    cd /var/www/html/
-    sudo chown -R www-data:www-data .
-    sudo echo '<h1>Welcome to Server 1</h1>' > index.html
-    sudo service apache2 restart
-    fi
-    ;;
-
-14) read -p "You want restart this machine? y/n :" -n 1 -r
+13) read -p "You want restart this machine? y/n :" -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
