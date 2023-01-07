@@ -4,6 +4,9 @@ again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
+COLOR=$'\e[1;91m'
+
+echo "$COLOR"
 echo "***************************************************************"
 echo "*  ___       _                 ____                           *"
 echo "*/ ___|  ___| |_ _   _ _ __   / ___|  ___ _ ____   _____ _ __ *"
@@ -37,7 +40,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     sudo apt update -y
-    sudo apt-get install net-tools lynx zip unzip -y
+    sudo apt-get install lynx zip unzip figlet -y
     echo "Update success"
     fi
     ;;
@@ -66,7 +69,8 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo apt-get install apache2 -y
+    apt-get install apache2 -y
+
     echo "Apache is ready to use"
     fi
     ;; 
@@ -75,14 +79,14 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo apt-get install debconf-utils -y
+    apt-get install debconf-utils -y
     ROOT_PASSWORD=$(hostname | md5sum | awk '{print $1}')
     debconf-set-selections <<< "mariadb-server-10.6 mysql-server/root_password password $ROOT_PASSWORD"
     debconf-set-selections <<< "mariadb-server-10.2 mysql-server/root_password_again password $ROOT_PASSWORD"
     curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
     sudo bash mariadb_repo_setup --mariadb-server-version=10.6
-    sudo apt-get update
-    sudo apt-get install mariadb-server mariadb-client -y
+    apt-get update
+    apt-get install mariadb-server mariadb-client -y
     #save root credential into /etc/mysql/mycnf
     echo -e "\n[client]\nuser = root\npassword = $ROOT_PASSWORD" >> /etc/mysql/my.cnf
     # Add custom configuration for your Mysql
@@ -99,8 +103,8 @@ case $choice in
     echo "Add Repository..." 
     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    sudo apt-get update
-    sudo apt-get install postgresql-14 -y
+    apt-get update
+    apt-get install postgresql-14 -y
     echo "PgSQL is ready to use"
     fi
     ;;
@@ -109,10 +113,7 @@ case $choice in
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
-    sudo add-apt-repository ppa:ondrej/php
-    sudo apt update -y
-    echo "Add PHP Repository"
-    sudo apt-get install php8.0-common php8.0-cli php8.0-mbstring php8.0-xml php8.0-curl php8.0-mysql php8.0-fpm -y
+    apt-get install php8.0-common php8.0-cli php8.0-mbstring php8.0-xml php8.0-curl php8.0-mysql php8.0-fpm libapache2-mod-php8.0 -y
     echo "PHP is ready to use"
     fi
     ;;
@@ -122,9 +123,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     echo "Add PHP Repository"
-    sudo add-apt-repository ppa:ondrej/php
-    sudo apt update -y
-    sudo apt-get install php8.1-common php8.1-cli php8.1-mbstring php8.1-xml php8.1-curl php8.1-mysql php8.1-fpm -y
+    apt-get install php8.1-common php8.1-cli php8.1-mbstring php8.1-xml php8.1-curl php8.1-mysql php8.1-fpm libapache2-mod-php8.1 -y
     echo "PHP is ready to use"
     fi
     ;;
@@ -151,8 +150,8 @@ case $choice in
     echo "Add Yarn Repository"
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update
-    sudo apt-get install yarn -y
+    apt-get update
+    apt-get install yarn -y
     echo "Yarn is ready to use"
     fi
     ;;
