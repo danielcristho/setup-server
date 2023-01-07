@@ -186,13 +186,13 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     date=$(date +"%Y-%m-%d_%H-%M-%S")
-    mkdir -p backup/$date/nginx/
-    mkdir -p backup/$date/php/
-    mkdir -p backup/$date/php/
-    mkdir -p backup/$date/mysql/
-    cp -r /etc/nginx/ backup/$date/nginx/
-    cp -r /etc/php/ backup/$date/php/
-    cp -r /etc/mysql/ backup/$date/mysql/
+    mkdir -p backup/$date/nginx
+    mkdir -p backup/$date/php
+    mkdir -p backup/$date/php
+    mkdir -p backup/$date/mysql
+    cp -r /etc/nginx/ backup/$date/nginx
+    cp -r /etc/php/ backup/$date/php
+    cp -r /etc/mysql/ backup/$date/mysql
     fi
     ;;
 
