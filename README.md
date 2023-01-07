@@ -1,6 +1,6 @@
 # Setup Server
 
-BASH Script for stack installation and configure your Ubuntu
+BASH Script for stack installation and configure your Ubuntu, including Node, Yarn and etc.
 
 ## Requirements
 
@@ -22,3 +22,5 @@ wget https://raw.githubusercontent.com/danielcristho/setup-server/main/install.s
 chmod +x install.sh
 ./install.sh
 ```
+
+MariaDB credentials are generated using md5 hash of your server hostname and will be put into /etc/mysql/my.cnf after [client] directive.
