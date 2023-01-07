@@ -216,3 +216,6 @@ echo -n "back again? [y/n]: ";
 read again;
 done
 done
+#close font color session
+STOP="\e[0m" 
+printf "${STOP}"
