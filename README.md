@@ -23,4 +23,4 @@ chmod +x install.sh
 ./install.sh
 ```
 
-MariaDB credentials are generated using md5 hash of your server hostname and will be put into /etc/mysql/my.cnf after [client] directive.
+MariaDB credential(username&password) are generated using md5 hash of your server hostname and will be put into /etc/mysql/my.cnf after [client] directive.
