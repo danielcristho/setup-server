@@ -17,21 +17,19 @@ echo "***************************************************************"
 echo "1.  Update machine                                            "
 echo "2.  Upgrade machine                                           "
 echo "3.  Install Nginx                                             "
-echo "4.  Install Apache2                                           "
-echo "5.  Install MariaDB                                           "
-echo "6.  Install Postgres                                          "
-echo "7.  Install PHP8.0                                            "
-echo "8.  Install PHP8.1                                            "
-echo "9.  Install Yarn                                              "
-echo "10. Install Node js using NVM                                 "
-echo "11. Install PM2                                               "
-echo "11. Install Monitoring tool(Netdata)                          "
-echo "12. Set fireawall permisision                                 "
-echo "13. Backup LAMP/LEMP(Current Configuration)                   "
-echo "14. Restart machine                                           "
+echo "4.  Install MariaDB                                           "
+echo "5.  Install PHP8.0                                            "
+echo "6.  Install PHP8.1                                            "
+echo "7.  Install Yarn                                              "
+echo "8.  Install Node js using NVM                                 "
+echo "9.  Install PM2                                               "
+echo "10. Install Monitoring tool(Netdata)                          "
+echo "11. Set fireawall permisision                                 "
+echo "12. Backup LAMP/LEMP(Current Configuration)                   "
+echo "13. Restart machine                                           "
 echo "0.  Exit                                                      "
 
-read -p "Enter Your Choice [0 - 14] : " choice;
+read -p "Enter Your Choice [0 - 13] : " choice;
 echo "";
 case $choice in
 
