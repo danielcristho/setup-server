@@ -70,7 +70,6 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then 
     apt-get install apache2 -y
-
     echo "Apache is ready to use"
     fi
     ;; 
@@ -112,7 +111,9 @@ case $choice in
 7)  read -p "You want install PHP8.0? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
-    then 
+    then
+    add-apt-repository ppa:ondrej/php
+    echo "Add PHP Repository..."
     apt-get install php8.0-common php8.0-cli php8.0-mbstring php8.0-xml php8.0-curl php8.0-mysql php8.0-fpm libapache2-mod-php8.0 -y
     echo "PHP is ready to use"
     fi
@@ -121,8 +122,9 @@ case $choice in
 8)  read -p "You want install PHP8.1? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
-    then 
-    echo "Add PHP Repository"
+    then
+    add-apt-repository ppa:ondrej/php
+    echo "Add PHP Repository..."
     apt-get install php8.1-common php8.1-cli php8.1-mbstring php8.1-xml php8.1-curl php8.1-mysql php8.1-fpm libapache2-mod-php8.1 -y
     echo "PHP is ready to use"
     fi
