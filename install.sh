@@ -31,7 +31,7 @@ echo "13. Backup LAMP/LEMP(Current Configuration)                   "
 echo "14. Restart machine                                           "
 echo "0.  Exit                                                      "
 
-read -p "Enter Your Choice [0 - 15] : " choice;
+read -p "Enter Your Choice [0 - 14] : " choice;
 echo "";
 case $choice in
 
@@ -181,6 +181,7 @@ case $choice in
     ufw allow 443
     ufw allow 80
     ufw allow 22
+    ufw reload
     fi
     ;;
 
@@ -219,6 +220,7 @@ echo -n "back again? [y/n]: ";
 read again;
 done
 done
+
 #close font color session
 # Clear the color after that
 STOP='\033[0m'
