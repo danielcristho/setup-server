@@ -1,6 +1,6 @@
 # Setup Server
 
-BASH Script for stack installation and configure your Ubuntu, including Node, Yarn and etc.
+BASH Script for LEMP installation and configure on your Ubuntu, including Node, Yarn and etc.
 
 ## Requirements
 
