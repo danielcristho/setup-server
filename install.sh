@@ -30,7 +30,7 @@ echo "8.  Install Node js using NVM                                 "
 echo "9.  Install PM2                                               "
 echo "10. Install Monitoring tool(Netdata)                          "
 echo "11. Set fireawall permisision                                 "
-echo "12. Backup LAMP/LEMP(Current Configuration)                   "
+echo "12. Backup LEMP(Current Configuration)                        "
 echo "13. Restart machine                                           "
 echo "0.  Exit                                                      "
 
@@ -47,7 +47,7 @@ case $choice in
     echo "Update success"
     fi
     ;;
-
+``
 2)  read -p "Do you want to upgrade this machine? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -66,7 +66,7 @@ case $choice in
     wget -O /etc/nginx/sites-enabled/default https://raw.githubusercontent.com/danielcristho/setup-server/main/defaut.conf
     mkdir /var/www/$PROJECT_DIR
     echo -e "<html>\n<body>\n<h1>Hello World!<h1>\n</body>\n</html>" > /var/www/$PROJECT_DIR/index.html
-    chown -R www-data:www-data /var/www/*
+    chown -R www-data:www-data /var/www/$PROJECT_DIR
     systemctl restart nginx
     echo "Nginx is ready to use"
     fi
