@@ -47,7 +47,7 @@ case $choice in
     echo "Update success"
     fi
     ;;
-``
+
 2)  read -p "Do you want to upgrade this machine? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
