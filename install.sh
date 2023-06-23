@@ -25,13 +25,14 @@ echo "3.  Install Nginx                                             "
 echo "4.  Install MariaDB                                           "
 echo "5.  Install PHP8.0                                            "
 echo "6.  Install PHP8.1                                            "
-echo "7.  Install Yarn                                              "
-echo "8.  Install Node js using NVM                                 "
-echo "9.  Install PM2                                               "
-echo "10. Install Monitoring tool(Netdata)                          "
-echo "11. Set fireawall permisision                                 "
-echo "12. Backup LEMP(Current Configuration)                        "
-echo "13. Restart machine                                           "
+echo "7.  Install PHP8.2                                            "
+echo "8.  Install Yarn                                              "
+echo "9.  Install Node js using NVM                                 "
+echo "10.  Install PM2                                               "
+echo "11. Install Monitoring tool(Netdata)                          "
+echo "12. Set fireawall permisision                                 "
+echo "13. Backup LEMP(Current Configuration)                        "
+echo "14. Restart machine                                           "
 echo "0.  Exit                                                      "
 
 read -p "Enter Your Choice [0 - 13] : " choice;
@@ -123,8 +124,22 @@ case $choice in
     echo "PHP is ready to use"
     fi
     ;;
+7)  read -p "Do you want to install PHP8.2? y/n : " -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    add-apt-repository ppa:ondrej/php
+    echo "Adding PHP repository..."
+    apt-get install php8.2-common php8.2-cli php8.2-mbstring php8.2-xml php8.2-curl php8.2-mysql php8.2-fpm -y
+    #Create opcache file
+    wget -O /var/www/$PROJECT_DIR/opcache.php https://github.com/rlerdorf/opcache-status/blob/master/opcache.php
+    #Create php info file
+    echo -e "<?php phpinfo();" > /var/www/$PROJECT_DIR/info.php
+    echo "PHP is ready to use"
+    fi
+    ;;
 
-7)  read -p "Do you want to install Node? y/n : " -n 1 -r
+8)  read -p "Do you want to install Node? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -139,7 +154,7 @@ case $choice in
     fi
     ;;
 
-8)  read -p "Do you want to install Yarn? y/n : " -n 1 -r
+9)  read -p "Do you want to install Yarn? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -152,7 +167,7 @@ case $choice in
     fi
     ;;
 
-9)  read -p "Do you want to install pm2? y/n : " -n 1 -r
+10)  read -p "Do you want to install pm2? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -161,7 +176,7 @@ case $choice in
     fi
     ;;
 
-10) read -p "Do you want to install Netdata monitoring? y/n : " -n 1 -r
+11) read -p "Do you want to install Netdata monitoring? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -174,7 +189,7 @@ case $choice in
     fi
     ;;
 
-11) read -p "Do you want set UFW permission? y/n : " -n 1 -r
+12) read -p "Do you want set UFW permission? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -188,7 +203,7 @@ case $choice in
     fi
     ;;
 
-12) read -p "Do you want create backup current configuration? y/n : " -n 1 -r
+13) read -p "Do you want create backup current configuration? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -202,7 +217,7 @@ case $choice in
     fi
     ;;
 
-13) read -p "Do you want to restart this machine? y/n : " -n 1 -r
+14) read -p "Do you want to restart this machine? y/n : " -n 1 -r
     echo ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
