@@ -12,15 +12,15 @@ BASH Script for LEMP installation and configure on your Ubuntu, including Node, 
 To download and run this script use the single line below:
 
 ```bash
-wget https://raw.githubusercontent.com/danielcristho/setup-server/main/install.sh && bash install.sh
+wget https://raw.githubusercontent.com/danielcristho/setup-server/main/install.sh && sudo bash install.sh
 ```
 
 Or make the script executable
 
 ```bash
 wget https://raw.githubusercontent.com/danielcristho/setup-server/main/install.sh
-chmod +x install.sh
-./install.sh
+sudo chmod +x install.sh
+sudo ./install.sh
 ```
 
 ## Features

@@ -4,7 +4,8 @@
 export PROJECT_DIR=example-project
 export DOMAIN_NAME=example.com
 
-# Login as if [[ $EUID -ne 0 ]]; then
+# Login as sudo
+if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root"
     exit 1
 fi
