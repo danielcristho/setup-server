@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ENVIRONMENT #
-export PROJECT_DIR=project
+export PROJECT_DIR=example-project
 export DOMAIN_NAME=example.com
 
 
@@ -17,7 +17,7 @@ echo "*/ ___|  ___| |_ _   _ _ __   / ___|  ___ _ ____   _____ _ __ *"
 echo "*\___ \ / _ \ __| | | | '_ \  \___ \ / _ \ '__\ \ / / _ \ '__|*"
 echo "* ___) |  __/ |_| |_| | |_) |  ___) |  __/ |   \ V /  __/ |   *"
 echo "*|____/ \___|\__|\__,_| .__/  |____/ \___|_|    \_/ \___|_|   *"
-echo "*                     |_|                                     *"
+echo "*                     |_|                by: @danielcristho   *"
 echo "***************************************************************"
 echo "1.  Update machine                                            "
 echo "2.  Upgrade machine                                           "
@@ -29,7 +29,7 @@ echo "7.  Install Yarn                                              "
 echo "8.  Install Node js using NVM                                 "
 echo "9.  Install PM2                                               "
 echo "10. Install Monitoring tool(Netdata)                          "
-echo "11. Set fireawall permisision                                 "
+echo "11. Set UFW permisision                                       "
 echo "12. Backup LEMP(Current Configuration)                        "
 echo "13. Restart machine                                           "
 echo "0.  Exit                                                      "
@@ -179,12 +179,12 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
     echo "y" | sudo ufw enable
-    ufw allow ssh
-    ufw allow 'Nginx HTTP'
-    ufw allow 443
-    ufw allow 80
-    ufw allow 22
-    ufw reload
+    sudo ufw allow ssh
+    sudo ufw allow 'Nginx HTTP'
+    sudo ufw allow 443
+    sudo ufw allow 80
+    sudo ufw allow 22
+    sudo ufw reload
     fi
     ;;
 
@@ -212,7 +212,7 @@ case $choice in
 
 0)  exit
     ;;
-*)    echo "sorry, menu is not found"
+*)    echo "Sorry, menu is not found"
 esac
 echo -n "Back again? [y/n]: ";
 read again;
