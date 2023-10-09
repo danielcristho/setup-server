@@ -5,7 +5,7 @@ BASH Script for LEMP installation and configure on your Ubuntu, including Node, 
 ## Requirements
 
 - Ubuntu 18.04 or latest version
-- This script utilises root user privileges. If you run it from another user you need to add this user to sudoers group and prepend sudo to all commands in the script.
+- This script utilises root user privileges. If you run it from another user you need to add this user to sudoers group and prepend sudo to all commands in the script if needed.
 
 ## Usage
 
