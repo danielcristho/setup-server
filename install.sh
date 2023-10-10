@@ -13,16 +13,18 @@ fi
 again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
-clear
 COLOR=$'\e[1;91m'
+GREEN=$'\e[32m'
+RESET_COLOR=$'\e[0m'
 echo "$COLOR"
+
 echo "***************************************************************"
 echo "*  ___       _                 ____                           *"
 echo "*/ ___|  ___| |_ _   _ _ __   / ___|  ___ _ ____   _____ _ __ *"
 echo "*\___ \ / _ \ __| | | | '_ \  \___ \ / _ \ '__\ \ / / _ \ '__|*"
 echo "* ___) |  __/ |_| |_| | |_) |  ___) |  __/ |   \ V /  __/ |   *"
 echo "*|____/ \___|\__|\__,_| .__/  |____/ \___|_|    \_/ \___|_|   *"
-echo "*                     |_|                by: @danielcristho   *"
+echo "*                     |_|                   by: $GREEN@danielcristho$RESET_COLOR*"
 echo "***************************************************************"
 echo "1.  Update machine                                            "
 echo "2.  Upgrade machine                                           "
@@ -33,7 +35,7 @@ echo "6.  Install Yarn                                              "
 echo "7.  Install Node js using NVM                                 "
 echo "8.  Install PM2                                               "
 echo "9.  Install Monitoring tool(Netdata)                          "
-echo "10. Set UFW Permission		                                "
+echo "10. Set UFW Rules                                             "
 echo "11. Backup LEMP(Current Configuration)                        "
 echo "12. Restart machine                                           "
 echo "0.  Exit                                                      "
@@ -195,18 +197,32 @@ case $choice in
     fi
     ;;
 
-10) read -p "Do you want set UFW permission? y/n : " -n 1 -r
+10) read -p "Select UFW rules to allow (press enter first): "
+    echo "1. SSH"
+    echo "2. Nginx HTTP"
+    echo "3. HTTP (80)"
+    echo "4. HTTPS (443)"
+    echo "5. Custom Port (e.g., 1234)"
+    read -p "Enter your choices (separated by using comma): " ufw_rules
     echo ""
-    if [[ ! $REPLY =~ ^[Nn]$ ]]
-    then
-    echo "y" | ufw enable
-    ufw allow ssh
-    ufw allow 'Nginx HTTP'
-    ufw allow 443
-    ufw allow 80
-    ufw allow 22
+    IFS=',' read -r -a choices <<< "$ufw_rules" # using Internal Field Separator (IFS)
+
+    for choice in "${choices[@]}"
+    do
+        case $choice in
+            1) ufw allow ssh ;;
+            2) ufw allow 'Nginx HTTP' ;;
+            3) ufw allow 80 ;;
+            4) ufw allow 443 ;;
+            5)
+                read -p "Enter custom port: " custom_port
+                ufw allow $custom_port ;;
+            *) echo "Invalid choice: $choice" ;;
+        esac
+    done
+    ufw enable
     ufw reload
-    fi
+    echo "UFW rules are configured"
     ;;
 
 11) read -p "Do you want create backup current configuration? y/n : " -n 1 -r
