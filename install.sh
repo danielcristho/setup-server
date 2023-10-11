@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# ENVIRONMENT #
-export PROJECT_DIR=example-project
-export DOMAIN_NAME=example.com
-
 # Login as sudo
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root"
@@ -49,7 +45,7 @@ case $choice in
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
     apt update -y
-    apt-get install lynx zip unzip net-tools -y
+    apt-get install dnsutils zip unzip net-tools software-properties-common -y
     echo "Update success"
     fi
     ;;
@@ -113,6 +109,7 @@ case $choice in
             1)
                 add-apt-repository ppa:ondrej/php
                 echo "Adding PHP repository..."
+				apt-get update 
                 apt-get install php8.0-common php8.0-cli php8.0-mbstring php8.0-xml php8.0-curl php8.0-mysql php8.0-fpm -y
                 #Create opcache file
                 wget -O /var/www/$PROJECT_DIR/opcache.php https://github.com/rlerdorf/opcache-status/blob/master/opcache.php
@@ -123,6 +120,7 @@ case $choice in
             2)
                 add-apt-repository ppa:ondrej/php
                 echo "Adding PHP repository..."
+				apt-get update 
                 apt-get install php8.1-common php8.1-cli php8.1-mbstring php8.1-xml php8.1-curl php8.1-mysql php8.1-fpm -y
                 #Create opcache file
                 wget -O /var/www/$PROJECT_DIR/opcache.php https://github.com/rlerdorf/opcache-status/blob/master/opcache.php
@@ -133,6 +131,7 @@ case $choice in
             3)
                 add-apt-repository ppa:ondrej/php
                 echo "Adding PHP repository..."
+				apt-get update
                 apt-get install php8.2-common php8.2-cli php8.2-mbstring php8.2-xml php8.2-curl php8.2-mysql php8.2-fpm -y
                 #Create opcache file
                 wget -O /var/www/$PROJECT_DIR/opcache.php https://github.com/rlerdorf/opcache-status/blob/master/opcache.php
