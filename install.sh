@@ -6,6 +6,18 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+# Detect OS Distribution
+if [ -f /etc/os-release ]; then
+    source /etc/os-release
+    DISTRIBUTION=$NAME
+    VERSION=$VERSION_ID
+else
+    echo "/etc/os-release file not found. Unable to detect distribution."
+    exit 1
+fi
+
+echo "Detected distribution: $DISTRIBUTION $VERSION"
+
 again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
